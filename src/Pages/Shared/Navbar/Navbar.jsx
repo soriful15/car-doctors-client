@@ -1,14 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.svg'
+import { AuthContext } from '../../../Providers/AuthProvider';
 const Navbar = () => {
+    const { logOut, user } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+
+        logOut()
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => console.log(error))
+    }
+
 
     const navItems = <>
 
         <li><Link to='/'>Home </Link></li>
-        <li><Link to='/about'>About </Link></li>
+        
         <li><Link to='/service'>Services </Link></li>
-        <li><Link to='/blog'> Blog </Link></li>
+
+
+        {user?.email ?
+            <>
+      <li> <button onClick={handleLogOut} className="btn  btn-primary text-white ">LogOut</button></li>
+                <li><Link to='/booking'>My Booking </Link></li>
+            </>
+            : <li><Link to='/login'> Login </Link></li>}
+
+
+
         <li><Link to='/contact'>Contact </Link></li>
     </>
 
@@ -34,11 +56,11 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                  {navItems}
+                    {navItems}
                 </ul>
             </div>
             <div className="navbar-end">
-            <button className="btn btn-outline btn-secondary ">Appointment</button>
+                <button className="btn btn-outline btn-secondary ">Appointment</button>
             </div>
         </div>
     );
