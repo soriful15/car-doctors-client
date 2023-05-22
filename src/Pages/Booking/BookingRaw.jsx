@@ -32,7 +32,7 @@ const BookingRaw = ({ booking, handleDelete, handleConfirm }) => {
             <td>{price}</td>
 
             <th>
-                {status === 'confirm' ? <span className='font-bold text-primary'>Confirmed</span> : <button onClick={() => handleConfirm(_id)} className="btn btn-ghost btn-xs">please Confirm</button>}
+                {status === 'confirm' ? <span className='font-bold text-primary'>Confirm</span> : <button onClick={() => handleConfirm(_id)} className="btn btn-ghost btn-xs">please Confirm</button>}
             </th>
         </tr>
 

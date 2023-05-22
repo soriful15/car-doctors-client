@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import login from '../../assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import SocialLogin from '../Shared/ScocialLogin/SocialLogin';
 const SingUp = () => {
     const { createUser } = useContext(AuthContext)
     const handleSingUp = (e) => {
@@ -51,7 +52,7 @@ const SingUp = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm  Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" required />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
@@ -61,6 +62,9 @@ const SingUp = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>Already Have an Account? <Link className='text-orange-600 font-bold' to='/login'>Login</Link></p>
+                        <div className='text-center'>
+                       <SocialLogin></SocialLogin>
+                       </div>
                     </div>
                 </div>
             </div>

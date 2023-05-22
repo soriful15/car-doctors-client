@@ -29,7 +29,7 @@ const BookServices = () => {
         }
         console.log(booking)
 
-        fetch(`http://localhost:4000/bookings`, {
+        fetch(`https://cars-doctors-server-rho.vercel.app/bookings`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -86,7 +86,7 @@ const BookServices = () => {
                     </div>
                     <div className="form-control mt-6">
 
-                        <input className='btn btn-warning btn-block' type="submit" value="Order Confirm" />
+         <input className='btn btn-warning btn-block' type="submit" value="Order Confirm" />
                     </div>
                 </div>
 

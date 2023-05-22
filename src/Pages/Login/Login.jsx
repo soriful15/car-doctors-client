@@ -1,24 +1,57 @@
 import React, { useContext } from 'react';
 import login from '../../assets/images/login/login.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import SocialLogin from '../Shared/ScocialLogin/SocialLogin';
+
 const Login = () => {
 
-const {singIn}=useContext(AuthContext)
+    let navigate = useNavigate()
+    let location = useLocation()
+    let from = location.state?.from?.pathname || '/';
+
+
+    const { singIn } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault()
         const form = e.target
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
+        // console.log(email, password)
 
 
-        singIn(email,password)
-        .then(result=>{
-            const loginUser=result.user
-            console.log(loginUser)
-        })
-        .catch(error => console.log(error))
+        singIn(email, password)
+            .then(result => {
+                const loginUser = result.user
+                console.log(loginUser)
+                // console.log(loginUser)
+                // navigate(from, { replace: true })
+
+              /*   const loggedUser = {
+                    email: loginUser.email
+                }
+                console.log(loggedUser) */
+                navigate(from, { replace: true })
+
+
+               /*  fetch('https://cars-doctors-server-rho.vercel.app/jwt',{
+                    method:'POST',
+                    headers:{
+                        'content-type':'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
+
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    console.log('jwt response:',data)
+                    // waring: Local Storage is not the best (second best place) to store access token
+                    localStorage.setItem('car-access-token', data.token)
+                    // navigate(from, { replace: true })
+                })
+ */
+            })
+            .catch(error => console.log(error))
     }
 
 
@@ -45,7 +78,7 @@ const {singIn}=useContext(AuthContext)
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" name='password' placeholder="password" className="input input-bordered" required />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
@@ -55,6 +88,9 @@ const {singIn}=useContext(AuthContext)
                             </div>
                         </form>
                         <p className='my-4 text-center'>New to car Doctors <Link className='text-orange-600 font-bold' to='/singup'>Sing Up</Link></p>
+                       <div className='text-center'>
+                       <SocialLogin></SocialLogin>
+                       </div>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,7 @@ const Navbar = () => {
         logOut()
             .then(result => {
                 console.log(result)
+                // localStorage.removeItem('car-access-token')
             })
             .catch(error => console.log(error))
     }
@@ -18,13 +19,13 @@ const Navbar = () => {
     const navItems = <>
 
         <li><Link to='/'>Home </Link></li>
-        
+
         <li><Link to='/service'>Services </Link></li>
 
 
         {user?.email ?
             <>
-      <li> <button onClick={handleLogOut} className="btn  btn-primary text-white ">LogOut</button></li>
+                <li> <button onClick={handleLogOut} className="btn  btn-primary text-white ">LogOut</button></li>
                 <li><Link to='/booking'>My Booking </Link></li>
             </>
             : <li><Link to='/login'> Login </Link></li>}
