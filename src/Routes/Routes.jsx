@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: '/books/:id',
                 element: <PrivateRout><BookServices></BookServices></PrivateRout>,
-                loader: ({ params }) => fetch(`https://cars-doctors-server-rho.vercel.app/services/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:4000/services/${params.id}`)
             },
             {
                 path: '/booking',
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
             // {
             //     path:'/booking/:id',
             //     element:<UpdatedBooking></UpdatedBooking>,
-            //     loader:({params})=>fetch(`https://cars-doctors-server-rho.vercel.app/bookings/${params.id}`)
+            //     loader:({params})=>fetch(`http://localhost:4000/bookings/${params.id}`)
             // },
         ]
     },

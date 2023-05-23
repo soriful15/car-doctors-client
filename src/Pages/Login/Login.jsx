@@ -34,7 +34,7 @@ const Login = () => {
                 navigate(from, { replace: true })
 
 
-               /*  fetch('https://cars-doctors-server-rho.vercel.app/jwt',{
+               /*  fetch('http://localhost:4000/jwt',{
                     method:'POST',
                     headers:{
                         'content-type':'application/json'
